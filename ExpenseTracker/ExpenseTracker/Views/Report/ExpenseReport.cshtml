@@ -1,0 +1,51 @@
+﻿@model  List<ExpenseTracker.Model.Expense>
+@{
+    ViewBag.Title = "ExpenseReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Breadcrumbs{
+    <div class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+            <li>Report</li>
+            <li class="active">Expense Report</li>
+        </ol>
+    </div>
+}
+
+<div class="row">
+
+    <div class="col-md-10">
+        @using (Html.BeginForm())
+        {
+        <div class="input-group form-group">
+            @Html.TextBox("startDate", "", new { @class = "form-control date", placeholder = "From Date" })
+            @Html.TextBox("endDate", "", new { @class = "form-control date", placeholder = "To Date" })
+            @Html.DropDownList("categoryId", new SelectList(ViewBag.categories, "Id", "Name"), "Select Category", new { @class = "form-control"})
+            <button class="btn btn-success">Filter Report</button>
+            @*<a href="@Url.Action("ExportExpenseReport", "ExpenseReport")" class="btn btn-primary">Export To Excel</a>*@
+        </div>
+        }
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Expense Report
+            </div>
+            <div class="panel-body">
+                <div id="list">
+                    @Html.Partial("_list", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $('.date').datetimepicker({
+            format: 'YYYY/MM/DD'
+        });
+    </script>
+}

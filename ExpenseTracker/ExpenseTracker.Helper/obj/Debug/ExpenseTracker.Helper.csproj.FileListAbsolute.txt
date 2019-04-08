@@ -1,0 +1,5 @@
+F:\Incesent\ExpenseTracker\ExpenseTracker.Helper\bin\Debug\ExpenseTracker.Helper.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.Helper\bin\Debug\ExpenseTracker.Helper.pdb
+F:\Incesent\ExpenseTracker\ExpenseTracker.Helper\obj\Debug\ExpenseTracker.Helper.csproj.CoreCompileInputs.cache
+F:\Incesent\ExpenseTracker\ExpenseTracker.Helper\obj\Debug\ExpenseTracker.Helper.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.Helper\obj\Debug\ExpenseTracker.Helper.pdb

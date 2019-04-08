@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8db5e5173234dd9a653f12c42cb585c" Name="Diagram1">
+        <EntityTypeShape EntityType="ExpenseTrackerModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpenseTrackerModel.Categories" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpenseTrackerModel.ExpenseLimits" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpenseTrackerModel.Expenses" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpenseTrackerModel.Roles" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpenseTrackerModel.Users" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="ExpenseTrackerModel.FK_dbo_Categories_dbo_Users_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpenseTrackerModel.FK_dbo_Expenses_dbo_Categories_CategoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpenseTrackerModel.FK_dbo_ExpenseLimits_dbo_Users_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpenseTrackerModel.FK_dbo_Users_dbo_Roles_RoleId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

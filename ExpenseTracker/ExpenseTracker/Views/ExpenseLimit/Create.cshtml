@@ -1,0 +1,33 @@
+﻿@model ExpenseTracker.Model.ExpenseLimit
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Breadcrumbs{
+    <div class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+            <li class="active">Expense Limit</li>
+        </ol>
+    </div>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Add Expense Limit
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Amount: <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(model => model.LimitAmount, new { @class = "form-control input-sm" })
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success">Submit</button>
+        }
+    </div>
+</div>

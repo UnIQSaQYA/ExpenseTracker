@@ -1,0 +1,44 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ExpenseTracker.Model.Category>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-hover table-striped">
+        <tr class="info">
+            <td>Name</td>
+            <td>Status</td>
+            <td>Created Date</td>
+            <td>Action</td>
+        </tr>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.Name</td>
+                <td><span class="label @((category.Status == 1) ? "label-success" : "label-warning")">@((category.Status == 1) ? "Active" : "Inactive")</span></td>
+                <td>@(category.CreatedAt.HasValue ? category.CreatedAt.Value.ToString("MMM yyyy dd") : "---")</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Category", new { @id = category.Id})" class="btn btn-primary btn-xs">Edit</a>
+                    <a href="@Url.Action("DeleteConfirmation", "Category", new { @id = category.Id})" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="row">
+        <div class="col-md-12 paginate">
+            <div class="float-left m-t-10">
+                Showing @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            </div>
+            <div class="float-right">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="field-error">
+        <div class="field-content">
+            No data found.
+        </div>
+    </div>
+}

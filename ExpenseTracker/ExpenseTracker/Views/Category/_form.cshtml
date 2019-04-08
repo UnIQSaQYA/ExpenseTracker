@@ -1,0 +1,31 @@
+﻿@model ExpenseTracker.Model.Category
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label for="name">Name: <span class="text-danger">*</span></label>
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control input-sm", @placeholder = "Category Name", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label for="Status">Status: <span class="text-danger">*</span></label>
+                @Html.DropDownListFor(model => model.Status, new List<SelectListItem> {
+           new SelectListItem() { Text="Active", Value="1"},
+           new SelectListItem() { Text="InActive",Value="0"} }, "Select", new { @class = "form-control input-sm" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="remarks">
+            Remarks:
+        </label>
+        @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control input-sm" })
+    </div>
+    <button class="btn btn-success">Submit</button>
+}

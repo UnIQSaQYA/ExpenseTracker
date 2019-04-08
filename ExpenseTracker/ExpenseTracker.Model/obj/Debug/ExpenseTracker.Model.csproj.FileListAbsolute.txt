@@ -1,0 +1,14 @@
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\bin\Debug\ExpenseTracker.Model.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\bin\Debug\ExpenseTracker.Model.pdb
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\bin\Debug\ExpenseTracker.Helper.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\bin\Debug\ExpensTracker.DAL.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\bin\Debug\EntityFramework.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\bin\Debug\ExpenseTracker.Helper.pdb
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\bin\Debug\ExpensTracker.DAL.pdb
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\bin\Debug\ExpensTracker.DAL.dll.config
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\bin\Debug\EntityFramework.xml
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\obj\Debug\ExpenseTracker.Model.csprojAssemblyReference.cache
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\obj\Debug\ExpenseTracker.Model.csproj.CoreCompileInputs.cache
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\obj\Debug\ExpenseTracker.Model.csproj.CopyComplete
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\obj\Debug\ExpenseTracker.Model.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.Model\obj\Debug\ExpenseTracker.Model.pdb

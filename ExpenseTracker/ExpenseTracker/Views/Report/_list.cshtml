@@ -1,0 +1,39 @@
+﻿@model List<ExpenseTracker.Model.Expense>
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-hover table-striped">
+        <tr class="info">
+            <td>Item</td>
+            <td>Category</td>
+            <td>Amount</td>
+            <td>Date</td>
+        </tr>
+        @foreach (var expense in Model)
+        {
+            <tr>
+                <td>
+                    @expense.Item
+                </td>
+                <td>@expense.CategoryName</td>
+                <td>@expense.Amount</td>
+                <td>@expense.Date.ToString("MMM dd, yyyy")</td>
+            </tr>
+        }
+        <tfoot>
+            <tr class="success">
+                <td>Total Expense</td>
+                <td></td>
+                <td class="">@Model.Sum(model => model.Amount)</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <div class="field-error">
+        <div class="field-content">
+            No Report found. Generate Report
+        </div>
+    </div>
+}

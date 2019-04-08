@@ -1,0 +1,86 @@
+﻿<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <h4 class="panel-title">Expense by category</h4>
+                </div>
+
+                <canvas id="myCategoryChart" width="100" height="110"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-5">
+                    <h4 class="panel-title">Expense Chart</h4>
+                </div>
+
+                <canvas id="myChart" width="200" height="100"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/chartjs/Chart.bundle.min.js"></script>
+<script>
+    var jsondata = @Html.Raw(Json.Encode(ViewBag.expense));
+    console.log(jsondata);
+    var labels = jsondata.map(function (e) {
+        return e.date;
+    });
+    var data = jsondata.map(function (e) {
+        return e.totalAmount;
+    });
+        var Amount = @Html.Raw(Json.Encode(ViewBag.Amount));
+        var label = @Html.Raw(Json.Encode(ViewBag.label));
+        var category = @Html.Raw(Json.Encode(ViewBag.Category));
+        var sum = @Html.Raw(Json.Encode(ViewBag.Sum));
+
+    var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '',
+                    data: data,
+                }]
+            },
+        });
+
+
+    var expenseJson = @Html.Raw(Json.Encode(ViewBag.expenseByCategory));
+    var expensdata = expenseJson.map(function (e) {
+        return e.Count;
+    });
+    console.log(expensdata);
+    var expenslabels = expenseJson.map(function (e) {
+        return e.CategoryName;
+    });
+    var ctx = document.getElementById("myCategoryChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: expenslabels,
+            datasets: [{
+                label: 'Mostly Expensed Category',
+                data: expensdata,
+                backgroundColor: [
+                    'rgba(26, 188, 156,0.6)',
+                    'rgba(52, 152, 219,0.6)',
+                    'rgba(155, 89, 182,0.6)',
+                    'rgba(52, 73, 94,0.6)',
+                    'rgba(230, 126, 34,0.6)',
+                    'rgba(241, 196, 15,0.6)',
+                    'rgba(231, 76, 60,0.6)',
+                    'rgba(46, 204, 113,0.6)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+</script>
+
+

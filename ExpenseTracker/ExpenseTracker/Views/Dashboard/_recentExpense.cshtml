@@ -1,0 +1,51 @@
+﻿@model List<ExpenseTracker.Model.Expense>
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4 class="panel-title">Recently Added Expense</h4>
+            <hr />
+            @if (Model != null && Model.Count > 0)
+            {
+                <table class="table table-hover table-striped m-t-10">
+                    <tr class="info">
+                        <td>Item</td>
+                        <td>Category</td>
+                        <td>Amount</td>
+                        <td>Date</td>
+                        <td>Action</td>
+                    </tr>
+                    @foreach (var expense in Model)
+                    {
+                        <tr>
+                            <td>
+                                @expense.Item
+                            </td>
+                            <td>@expense.CategoryName</td>
+                            <td>@expense.Amount</td>
+                            <td>@expense.Date.ToString("MMM yyyy dd")</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Expense", new { @id = expense.Id })" class="btn btn-primary btn-xs">Edit</a>
+                                <a href="@Url.Action("DeleteConfirmation", "Expense", new { @id = expense.Id })" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+
+                if (Model.Count >= 5)
+                {
+                    <div class="text-center">
+                        <a class="btn btn-primary" href="@Url.Action("Index", "Expense")">View More</a>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="field-error">
+                    <div class="field-content">
+                        No data found.<a href="@Url.Action("Create", "Expense")">Add Expense</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

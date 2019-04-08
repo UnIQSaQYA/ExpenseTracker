@@ -1,0 +1,23 @@
+﻿@model ExpenseTracker.Model.DashboardExpenseLimit
+
+@if (Model.ExpenseLimit == null)
+{
+    <div class="alert alert-info">
+        <p>Hey! Set your daily expense limits to get notify if You expend more than you wanted. <a href="@Url.Action("Create", "ExpenseLimit")">Add Limit</a></p>
+    </div>
+}
+@if (Model.ExpenseLimit != null && Model.Expenses == null)
+{
+    <div class="alert alert-info">
+        <p>Did you forgot to add todays expenses? <a href="@Url.Action("Create", "Expense")">Add Expense</a></p>
+    </div>
+}
+@if (Model.ExpenseLimit != null && Model.Expenses != null)
+{
+    if (Model.Expenses.Sum(x => x.Amount) >= Model.ExpenseLimit.LimitAmount && Model.ExpenseLimit.Status != false)
+    {
+        <div class="alert alert-danger">
+            <p>Looks like you are expending more amount than you wanted! Please review your expenses. <a href="@Url.Action("ExpenseReport", "Report", new { startDate = DateTime.Today, endDate = DateTime.Today})">Review your Expense</a></p>
+        </div>
+    }
+}

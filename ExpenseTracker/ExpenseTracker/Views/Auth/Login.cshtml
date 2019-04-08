@@ -1,0 +1,50 @@
+﻿@model ExpenseTracker.Model.LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="~/Content/Styles/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Styles/font-awesome/all.css" rel="stylesheet" />
+    <link href="~/Content/Styles/Style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.js"></script>
+</head>
+<body>
+    <div class="d-flex align-items-center justify-content-center ht-100v">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+            {
+                <fieldset>
+                    <h4>Please Sign In</h4>
+                    <hr class="login">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-sm", @placeholder = "Email Address", @tabindex = "2", @id = "Email" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-sm", @placeholder = "Password", @tabindex = "5", @id = "Password" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <span class="button-checkbox">
+                        <button type="button" class="btn btn-sm" data-color="info">Remember Me</button>
+                        @Html.CheckBoxFor(model => model.RememberMe, new { @class = "hidden", @id = "remember_me" })
+                        @*<a href="" class="btn btn-link pull-right">Forgot Password?</a>*@
+                    </span>
+                    <hr class="login">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input type="submit" class="btn btn-lg btn-success btn-block btn-sm" value="Sign In">
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <a href="@Url.Action("Register", "Auth")" class="btn btn-lg btn-primary btn-block btn-sm register">Register</a>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <script src="~/Scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿@model ExpenseTracker.Model.DashboardCounter
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="mini-stat clearfix bg-expense rounded">
+            <span class="mini-stat-icon"><i class="glyphicon glyphicon-shopping-cart cart-color"></i></span>
+            <div class="mini-stat-info">
+                <span>@Model.ExpenseCount</span>
+                No of expense
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="mini-stat clearfix bg-category rounded">
+            <span class="mini-stat-icon"><i class="glyphicon glyphicon-tag category-color"></i></span>
+            <div class="mini-stat-info">
+                <span>@Model.CategoryCount</span>
+                No of Category
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="mini-stat clearfix bg-today rounded">
+            <span class="mini-stat-icon"><i class="glyphicon glyphicon-briefcase today-color"></i></span>
+            <div class="mini-stat-info">
+                <span>@Model.TotalExpenseToday</span>
+                Today Expense
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="mini-stat clearfix bg-totalexpense rounded">
+            <span class="mini-stat-icon"><i class="glyphicon glyphicon-usd expense-color"></i></span>
+            <div class="mini-stat-info">
+                <span>@Model.TotalExpense</span>
+                Total Expense
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model List<ExpenseTracker.Model.Category>
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4 class="panel-title">Recently Added Category</h4>
+            <hr />
+            @if (Model != null && Model.Count > 0)
+            {
+                <table class="table table-hover table-striped m-t-10">
+                    <tr class="info">
+                        <td>Name</td>
+                        <td>Status</td>
+                        <td>Created Date</td>
+                        <td>Action</td>
+                    </tr>
+                    @foreach (var category in Model)
+                    {
+                        <tr>
+                            <td>@category.Name</td>
+                            <td><span class="label @((category.Status == 1) ? "label-success" : "label-warning")">@((category.Status == 1) ? "Active" : "Inactive")</span></td>
+                            <td>@(category.CreatedAt.HasValue ? category.CreatedAt.Value.ToString("MMM yyyy dd") : "---")</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Category", new { @id = category.Id})" class="btn btn-primary btn-xs">Edit</a>
+                                <a href="@Url.Action("DeleteConfirmation", "Category", new { @id = category.Id})" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+                if(Model.Count >= 5)
+                {
+                <div class="text-center">
+                    <a class="btn btn-primary" href="@Url.Action("Index", "Category")">View More</a>
+                </div>
+                    
+                }
+            }
+            else
+            {
+                <div class="field-error">
+                    <div class="field-content">
+                        No data found. <a href="@Url.Action("Create", "Category")">Add Category</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

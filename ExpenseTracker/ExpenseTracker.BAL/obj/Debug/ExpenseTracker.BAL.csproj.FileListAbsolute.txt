@@ -1,0 +1,16 @@
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\ExpenseTracker.BAL.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\ExpenseTracker.BAL.pdb
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\ExpenseTracker.Helper.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\ExpenseTracker.Model.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\ExpensTracker.DAL.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\EntityFramework.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\ExpenseTracker.Helper.pdb
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\ExpenseTracker.Model.pdb
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\ExpensTracker.DAL.pdb
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\ExpensTracker.DAL.dll.config
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\bin\Debug\EntityFramework.xml
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\obj\Debug\ExpenseTracker.BAL.csprojAssemblyReference.cache
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\obj\Debug\ExpenseTracker.BAL.csproj.CoreCompileInputs.cache
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\obj\Debug\ExpenseTracker.BAL.csproj.CopyComplete
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\obj\Debug\ExpenseTracker.BAL.dll
+F:\Incesent\ExpenseTracker\ExpenseTracker.BAL\obj\Debug\ExpenseTracker.BAL.pdb

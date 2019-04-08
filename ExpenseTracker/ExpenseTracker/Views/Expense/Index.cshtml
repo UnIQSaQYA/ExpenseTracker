@@ -1,0 +1,131 @@
+﻿@model IEnumerable<ExpenseTracker.Model.Expense>
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="~/Content/Styles/datepicker/daterangepicker.css" rel="stylesheet" />
+}
+
+
+@section Breadcrumbs{
+    <div class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+            <li class="active">Expense Category</li>
+        </ol>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="pull-left">Expense List</span>
+                <a href="@Url.Action("Create","Expense")" class="pull-right btn btn-info btn-xs">Create</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.TextBox("search", "", new { @class = "form-control input-sm", @placeholder = "Search by Item, Expense", @id = "search", @onInput = "search(this.value)" })
+                </div>
+                <div id="list">
+                    @Html.Partial("_list", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Filter
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.TextBox("fromDate", "", new { @class = "form-control input-sm daterange", @placeholder = "Date Range" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/datepicker/daterangepicker.js"></script>
+    <script>
+        function search(prefix) {
+            var date = $('.daterange').val();
+           
+            if (date == undefined || date == '') {
+                startDate = "";
+                endDate = "";
+
+            } else {
+                date = $('.daterange').val().split('-');
+                startDate = '&startDate=' + date[0];
+                endDate = '&endDate=' + date[1];
+            }
+
+            $.ajax({
+                url: "/Expense/Index?searchString=" + prefix + startDate + endDate,
+                success: function (result) {
+                    ChangeUrl("index", "/Expense/Index?searchString=" + prefix + startDate + endDate);
+                    $('#list').html(result);
+                }
+            });
+        }
+
+        $(function () {
+
+            $(".daterange").daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                },
+                opens: 'left',
+            });
+            //cb(start, end);
+
+            $('.daterange').on('apply.daterangepicker', function (ev, picker) {
+                var startDate = picker.startDate.format('MM/DD/YYYY');
+                var endDate = picker.endDate.format('MM/DD/YYYY');
+                $(this).val(startDate + ' - ' + endDate);
+
+                var searchString = $('#search').val();
+                if (searchString == undefined || searchString == '') {
+                    searchString = '';
+                } else {
+                    searchString = '?searchString=' + searchString;
+                }
+
+                if (startDate == undefined || startDate == '') {
+                    startDate = '';
+                } else {
+                    startDate = '&startDate=' + startDate;
+                }
+
+                if (endDate == undefined || endDate == '') {
+                    endDate = '';
+                } else {
+                    endDate = '&endDate=' + endDate;
+                }
+
+                $.ajax({
+                    url: "/Expense/Index?" + searchString + startDate + endDate,
+                    success: function (result) {
+                        ChangeUrl("index", "/Expense/Index?" + searchString + startDate + endDate);
+                        $('#list').html(result);
+                    }
+                });
+            });
+
+            $('.daterange').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+
+        });
+
+
+    </script>
+}

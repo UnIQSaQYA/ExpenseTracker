@@ -1,0 +1,132 @@
+﻿@model IEnumerable<ExpenseTracker.Model.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Breadcrumbs{
+    <div class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+            <li class="active">Expense Category</li>
+        </ol>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="pull-left">Expense Category List</span>
+                <a href="@Url.Action("Create","Category")" class="pull-right btn btn-info btn-xs">Create</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.TextBox("search", "", new { @class = "form-control input-sm", @placeholder = "Search by Category Name", @id = "search", @onInput = "search(this.value)" })
+                </div>
+                <div id="list">
+                    @Html.Partial("_list", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Filter
+            </div>
+            <div class="panel-body">
+                <select class="form-control input-sm" onchange="filter(this.value)" id="filter">
+                    <option value="">Select Status</option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+     
+        function search(prefix) {
+            var e = document.getElementById("filter");
+            
+            var filter = e.options[e.selectedIndex].value;
+
+            if (filter == undefined || filter == '') {
+                filter = '';
+            } else {
+                filter = "&status=" + filter;
+            }
+
+            $.ajax({
+                url: "/Category/Index?searchString=" + prefix + filter,
+                success: function (result) {
+                    ChangeUrl("index", "/Category/Index?searchString=" + prefix + filter);
+                    $('#list').html(result);
+                }
+            });
+        }
+
+        function filter(value) {
+            var searchString = $('#search').val();
+            if (searchString == undefined || searchString == '') {
+                searchString = '';
+            } else {
+                searchString = '?searchString=' + searchString;
+            }
+
+            if (value == undefined || value == '') {
+                value = '';
+            } else {
+                value = '&status=' + value;
+            }
+
+
+            $.ajax({
+                url: "/Category/Index?" + searchString + value,
+                success: function (result) {
+                    ChangeUrl("index", "/Category/Index?" + searchString + value);
+                    $('#list').html(result);
+                }
+            });
+
+        }
+
+        $(function () {
+            $('body').on('click', '.pagination a', function (event) {
+                event.preventDefault();
+
+                var searchString = $('#search').val();
+                if (searchString == undefined || searchString == '') {
+                    searchString = '';
+                } else {
+                    searchString = '&searchString=' + searchString;
+                }
+
+                var e = document.getElementById("filter");
+
+                var filter = e.options[e.selectedIndex].value;
+
+                if (filter == undefined || filter == '') {
+                    filter = '';
+                } else {
+                    filter = "&status=" + filter;
+                }
+                var url = $(this).attr('href') + searchString + filter;
+                console.log(url);
+                $.ajax({
+                    url: url,
+                    success: function (result) {
+                        ChangeUrl('index', url);
+                        $('#list').html(result);
+                    }
+                });
+            });
+
+        });
+    </script>
+}

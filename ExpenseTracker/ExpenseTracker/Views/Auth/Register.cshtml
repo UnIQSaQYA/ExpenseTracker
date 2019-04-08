@@ -1,0 +1,77 @@
+﻿@model ExpenseTracker.Model.RegisterViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <link href="~/Content/Styles/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Styles/font-awesome/all.css" rel="stylesheet" />
+    <link href="~/Content/Styles/Style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.js"></script>
+</head>
+<body>
+    <div class="d-flex align-items-center justify-content-center ht-100v">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            @{ Html.RenderPartial("_alert"); }
+            @using (Html.BeginForm("Register", "Auth", FormMethod.Post))
+            {
+
+                <h4>Please Sign Up</h4>
+                <hr class="login">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-sm", @placeholder = "Name", @tabindex = "1", @id = "full_name" })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-sm", @placeholder = "Email Address", @tabindex = "2", @id = "Email" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control form-control-sm", @placeholder = "Address", @tabindex = "3", @id = "Address" })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Occupation, new { @class = "form-control form-control-sm", @placeholder = "Occupation", @tabindex = "4", @id = "occupation" })
+                    @Html.ValidationMessageFor(model => model.Occupation, "", new { @class = "text-danger" })
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-sm", @placeholder = "Password", @tabindex = "5", @id = "Password" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control form-control-sm", @placeholder = "Confirm Password", @tabindex = "6", @id = "confirmPassword" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <span class="button-checkbox">
+                            <button type="button" class="btn btn-sm" data-color="info" tabindex="7">I Agree</button>
+                            @Html.CheckBoxFor(model => model.Terms, new { @class = "hidden", @id = "t_and_c" })
+                        </span>
+                    </div>
+                    <div class="col-md-12">
+                        @Html.ValidationMessageFor(model => model.Terms, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr class="login">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg btn-sm" tabindex="7"></div>
+                    <div class="col-xs-12 col-md-6"><a href="@Url.Action("Login", "Auth")" class="btn btn-success btn-block btn-lg btn-login btn-sm">Sign In</a></div>
+                </div>
+            }
+        </div>
+    </div>
+    <script src="~/Scripts/script.js"></script>
+</body>
+</html>

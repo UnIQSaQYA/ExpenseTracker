@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- To render styles that are required for specific page only, Increase Page load speed -->
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div class="main-container">
+        <!-- Menu -->
+        <div class="side-menu">
+            <nav class="navbar navbar-default" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <div class="brand-wrapper">
+                        <!-- Hamburger -->
+                        <button type="button" class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Brand -->
+                        <div class="brand-name-wrapper">
+                            <a class="navbar-brand" href="@Url.Action("Index", "Dashboard")">
+                                Expense Tracker
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Menu -->
+                <div class="side-menu-container">
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "Category")"><span class="glyphicon glyphicon-send"></span> Expense Category</a></li>
+                        <li><a href="@Url.Action("Index", "Expense")"><span class="glyphicon glyphicon-plane"></span> Daily Expenses</a></li>
+                        <!-- Dropdown-->
+                        <li class="panel panel-default" id="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-lvl1">
+                                <span class="glyphicon glyphicon-user"></span> Report <span class="caret"></span>
+                            </a>
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-lvl1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="@Url.Action("ExpenseReport", "Report")">Expense Report</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Dropdown-->
+                        <li class="panel panel-default" id="dropdown">
+                            <a data-toggle="collapse" href="#settings">
+                                <span class="glyphicon glyphicon-user"></span> Settings <span class="caret"></span>
+                            </a>
+                            <!-- Dropdown level 1 -->
+                            <div id="settings" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="@Url.Action("Edit", "ExpenseLimit")">Expense Limit</a></li>
+                                        <li><a href="@Url.Action("ChangePassword", "Auth")">Change Password</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="@Url.Action("Logout", "Auth")"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+
+        </div>
+        <!-- Main Content -->
+        <div class="main-body">
+            @RenderSection("Breadcrumbs", required: false)
+            <div class="container-fluid">
+                <div class="side-body">
+                    @{ Html.RenderPartial("_alert"); }
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/themejs")
+    <!-- To Render scripts that are required for specific page only, Increse Page load speeds -->
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            //Initialize datepicker with current date and year, month date format, eg:-2019/04/03
+            $('.datepicker').datetimepicker({
+                defaultDate: '@DateTime.Today',
+                format: 'YYYY/MM/DD'
+            });
+        });
+
+        //What is this for?
+        //This is mainly for list view. Used during ajax search, filter and pagination.
+        //This code is kept here to prevent code duplication, can be put in specific list page instead of here.
+
+        //What it does?
+        //Populates the data in div with id list when the browser back button is hit
+        //Renders the partial view _list with its main view
+         window.addEventListener("popstate", function (e) {
+            $.ajax({
+                url: location.href,
+                success: function (result) {
+                    $('#list').html(result);
+                }
+            });
+        });
+
+        //What is this for?
+        //As above this code is also used for ajax, search, filter and pagination.
+
+        //What it does?
+        //Changes the browser url when doing ajax search, filter and pagination.
+
+        function ChangeUrl(page, url) {
+            if (typeof (history.pushState) != "undefined") {
+                var obj = { Page: page, Url: url };
+                history.pushState(null, obj.Page, obj.Url);
+            } else {
+                alert("Browser does not support HTML5.");
+            }
+        }
+
+    </script>
+</body>
+</html>

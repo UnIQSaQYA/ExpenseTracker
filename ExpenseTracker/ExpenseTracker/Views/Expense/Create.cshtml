@@ -1,0 +1,24 @@
+﻿@model ExpenseTracker.Model.Expense
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Breadcrumbs{
+    <div class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Expense</a></li>
+            <li class="active">Create</li>
+        </ol>
+    </div>
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Create Expense
+    </div>
+    <div class="panel-body">
+        @Html.Partial("_form")
+    </div>
+</div>

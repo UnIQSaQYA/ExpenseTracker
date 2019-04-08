@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Breadcrumbs{
+    <div class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+    </div>
+}
+@{Html.RenderAction("LimitNotifier", "Dashboard");}
+@{Html.RenderAction("Counter", "Dashboard");}
+@{ Html.RenderAction("ExpenseChart", "Dashboard");}
+<div class="row">
+    @{ Html.RenderAction("RecentCategory", "Dashboard");}
+    @{ Html.RenderAction("RecentExpense", "Dashboard");}
+</div>
+
+
+

@@ -1,0 +1,12 @@
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\bin\Debug\ExpensTracker.DAL.dll.config
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\bin\Debug\ExpensTracker.DAL.dll
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\bin\Debug\ExpensTracker.DAL.pdb
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\bin\Debug\EntityFramework.dll
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\bin\Debug\EntityFramework.SqlServer.dll
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\bin\Debug\EntityFramework.xml
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\bin\Debug\EntityFramework.SqlServer.xml
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\obj\Debug\ExpensTracker.DAL.csprojAssemblyReference.cache
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\obj\Debug\ExpensTracker.DAL.csproj.CoreCompileInputs.cache
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\obj\Debug\ExpensTracker.DAL.csproj.CopyComplete
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\obj\Debug\ExpensTracker.DAL.dll
+F:\Incesent\ExpenseTracker\ExpensTracker.DAL\obj\Debug\ExpensTracker.DAL.pdb
